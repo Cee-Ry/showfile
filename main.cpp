@@ -12,7 +12,7 @@ int main(int argc, char *argv[]) {
     vecStr file_names;
 
     if (argc == 1) {
-        printf("[FILENAME] or/and [OPTION] must be add\n");
+        printf("[FILENAME] or/and [OPTION] must be added\n");
         printf("Try 'show --help' or 'show -h' for more information\n");
         return 1;
     } else {
