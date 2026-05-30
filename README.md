@@ -2,8 +2,6 @@
 
 A simple CLI command to display file contents.
 
-Unlike `cat`, `showfile` separates multiple files with clear headers so you always know which file you're looking at.
-
 ---
 
 ## Usage
@@ -11,6 +9,7 @@ Unlike `cat`, `showfile` separates multiple files with clear headers so you alwa
 ```bash
 show <filename>
 show <file1> <file2> <file3> ...
+show <option> ...
 ```
 
 **Examples:**
@@ -47,10 +46,9 @@ When displaying multiple files, each file is wrapped with a header:
 ```bash
 git clone https://github.com/yourusername/showfile.git
 cd showfile
-mkdir build && cd build
-cmake ..
-make
-make install
+cmake -B build
+cmake --build build
+cmake --install build
 ```
 
 The `show` command will be installed to `~/.local/bin/`. Make sure it's in your `PATH`:
@@ -64,10 +62,14 @@ export PATH="$HOME/.local/bin:$PATH"
 ```bash
 git clone https://github.com/yourusername/showfile.git
 cd showfile
-mkdir build && cd build
-cmake ..
-cmake --build .
-cmake --install .
+cmake -B build -G "MinGW Makefiles"
+cmake --build build
+cmake --install build
+```
+The `show` command will be installed to `C:\Users\<username>\AppData\Local\Programs\showfile\bin`. Make sure it's executable anywhere, in `powershell` run:
+
+```bash
+[Environment]::SetEnvironmentVariable("Path", [Environment]::GetEnvironmentVariable("Path", "User") + ";C:\Users\<username>\AppData\Local\Programs\showfile\bin", "User")
 ```
 
 ---
@@ -78,6 +80,7 @@ cmake --install .
 showfile/
 ├── main.cpp          # Source code
 ├── CMakeLists.txt    # Build configuration
+├── README.md         # This file you are reading
 └── .gitignore
 ```
 
