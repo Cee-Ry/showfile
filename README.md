@@ -25,7 +25,7 @@ show main.cpp CMakeLists.txt
 When displaying multiple files, each file is wrapped with a header:
 
 ```
-=== === file1.txt === ===
+=== file1.txt ===
 (contents of file1)
 
 
