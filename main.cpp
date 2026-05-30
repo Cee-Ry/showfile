@@ -3,10 +3,11 @@
 #include <fstream>
 #include <string>
 
-using vecStr = std::vector<std::string>;
-using read = std::ifstream;
+using str = std::string;
+using vecStr = std::vector<str>;
 
 void readfile(vecStr &file);
+void help();
 
 int main(int argc, char *argv[]) {
     vecStr file_names;
@@ -18,6 +19,11 @@ int main(int argc, char *argv[]) {
     } else {
         for (int i = 1; i < argc; i++) {
             file_names.push_back(argv[i]);
+
+            if (argv[i] == str("-h") || argv[i] == str("--help")) {
+                help();
+                return 0;
+            }
         }
     }
 
@@ -28,7 +34,7 @@ int main(int argc, char *argv[]) {
 
 void readfile(vecStr &file) {
     vecStr content;
-    std::string line;
+    str line;
     for (const auto &filename : file) {
         std::ifstream name(filename);
 
@@ -47,4 +53,15 @@ void readfile(vecStr &file) {
             printf("\n");
         }
     }
+}
+
+void help() {
+    printf("\n=== === Help === ===\n");
+    printf("Usage: show [OPTION]... [FILENAME]...\n");
+    printf("Print the content of FILENAME to standard output.\n\n");
+    printf("Options:\n");
+    printf("  -h, --help\t\tShow this help message and exit\n");
+    printf("\nExamples:\n");
+    printf("  show file.txt\t\tPrint the content of file.txt\n");
+    printf("  show -h\t\tShow this help message and exit\n");
 }
