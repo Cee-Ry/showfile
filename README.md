@@ -29,7 +29,7 @@ When displaying multiple files, each file is wrapped with a header:
 (contents of file1)
 
 
-=== === file2.txt === ===
+=== file2.txt ===
 (contents of file2)
 ```
 
