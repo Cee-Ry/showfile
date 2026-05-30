@@ -44,7 +44,7 @@ When displaying multiple files, each file is wrapped with a header:
 ### Linux / macOS
 
 ```bash
-git clone https://github.com/yourusername/showfile.git
+git clone https://github.com/Cee-Ry/showfile.git
 cd showfile
 cmake -B build
 cmake --build build
@@ -60,7 +60,7 @@ export PATH="$HOME/.local/bin:$PATH"
 ### Windows
 
 ```bash
-git clone https://github.com/yourusername/showfile.git
+git clone https://github.com/Cee-Ry/showfile.git
 cd showfile
 cmake -B build -G "MinGW Makefiles"
 cmake --build build
