@@ -66,10 +66,10 @@ cmake -B build -G "MinGW Makefiles"
 cmake --build build
 cmake --install build
 ```
-The `show` command will be installed to `C:\Users\<username>\AppData\Local\Programs\showfile\bin`. Make sure it's executable anywhere, in `powershell` run:
+The `show` command will be installed to `C:\Users\<your username>\AppData\Local\Programs\showfile\bin`. Make sure it's executable anywhere, in `powershell` paste:
 
-```bash
-[Environment]::SetEnvironmentVariable("Path", [Environment]::GetEnvironmentVariable("Path", "User") + ";C:\Users\<username>\AppData\Local\Programs\showfile\bin", "User")
+```powershell
+[Environment]::SetEnvironmentVariable("Path", [Environment]::GetEnvironmentVariable("Path", "User") + ";$env:LOCALAPPDATA\Programs\showfile\bin", "User")
 ```
 
 ---
