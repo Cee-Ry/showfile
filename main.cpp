@@ -10,8 +10,8 @@ int main(int argc, char *argv[]) {
     std::vector<std::string> file_names;
 
     if (argc == 1) {
-        printf("[FILENAME] or/and [OPTION] must be added\n");
-        printf("Try 'show --help' or 'show -h' for more information\n");
+        fprintf(stderr, "[FILENAME] or/and [OPTION] must be added\n");
+        fprintf(stderr, "Try 'show --help' or 'show -h' for more information\n");
         return 1;
     } else {
         for (int i = 1; i < argc; i++) {
@@ -34,11 +34,11 @@ void readfile(std::vector<std::string> &file) {
         std::ifstream name(filename);
 
         if (!name.is_open()) {
-            printf("show: %s: No such File or Option\n", filename.c_str());
-            printf("Try 'show --help' or 'show -h' for more information\n");
+            fprintf(stderr, "show: %s: No such File or Option\n", filename.c_str());
+            fprintf(stderr, "Try 'show --help' or 'show -h' for more information\n");
             continue;
         } else {
-            printf("\n=== === %s === ===\n", filename.c_str());
+            printf("\n=== %s ===\n", filename.c_str());
             while (std::getline(name, line)) printf("%s\n", line.c_str());
             printf("\n");
         }
