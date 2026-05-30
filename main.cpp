@@ -6,10 +6,9 @@
 using vecStr = std::vector<std::string>;
 using read = std::ifstream;
 
-void readfile(vecStr &file, vecStr &content);
+void readfile(vecStr &file);
 
 int main(int argc, char *argv[]) {
-    vecStr file_contents;
     vecStr file_names;
 
     if (argc == 1) {
@@ -22,30 +21,30 @@ int main(int argc, char *argv[]) {
         }
     }
 
-    readfile(file_names, file_contents);
+    readfile(file_names);
 
     return 0;
 }
 
-void readfile(vecStr &file, vecStr &content) {
+void readfile(vecStr &file) {
+    vecStr content;
     std::string line;
-    for (int i = 0; i < file.size(); i++) {
-        std::ifstream name(file.at(i));
+    for (const auto &filename : file) {
+        std::ifstream name(filename);
 
         if (!name.is_open()) {
-            printf("show: %s: No such File or Option\n", file.at(i).c_str());
+            printf("show: %s: No such File or Option\n", filename.c_str());
             printf("Try 'show --help' or 'show -h' for more information\n");
             exit(1);
         } else {
-            while (std::getline(name, line)) {
-                content.push_back(line);
-            }
+            content.clear();
+            while (std::getline(name, line)) content.push_back(line);
 
-            printf("=== === %s === ===\n", file.at(i).c_str());
-            for (int j = 0; j < content.size(); j++) {
-                printf("%s\n", content.at(j).c_str());
+            printf("\n=== === %s === ===\n", filename.c_str());
+            for (const auto &eachline : content) {
+                printf("%s\n", eachline.c_str());
             }
-            printf("\n\n");
+            printf("\n");
         }
     }
 }
