@@ -41,10 +41,11 @@ void readfile(vecStr &file, vecStr &content) {
                 content.push_back(line);
             }
 
-            printf("=== %s ===\n\n", file.at(i).c_str());
+            printf("=== === %s === ===\n", file.at(i).c_str());
             for (int j = 0; j < content.size(); j++) {
                 printf("%s\n", content.at(j).c_str());
             }
+            printf("\n\n");
         }
     }
 }
