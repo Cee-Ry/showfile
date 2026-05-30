@@ -1,6 +1,7 @@
 #include <cstdio>
 #include <vector>
 #include <fstream>
+#include <string>
 
 using vecStr = std::vector<std::string>;
 using read = std::ifstream;
@@ -27,6 +28,7 @@ int main(int argc, char *argv[]) {
 }
 
 void readfile(vecStr &file, vecStr &content) {
+    std::string line;
     for (int i = 0; i < file.size(); i++) {
         std::ifstream name(file.at(i));
 
@@ -35,7 +37,14 @@ void readfile(vecStr &file, vecStr &content) {
             printf("Try 'show --help' or 'show -h' for more information\n");
             exit(1);
         } else {
-            while (std::getline(name, content));
+            while (std::getline(name, line)) {
+                content.push_back(line);
+            }
+
+            printf("=== %s ===\n\n", file.at(i).c_str());
+            for (int j = 0; j < content.size(); j++) {
+                printf("%s\n", content.at(j).c_str());
+            }
         }
     }
 }
