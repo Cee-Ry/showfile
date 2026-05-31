@@ -43,10 +43,10 @@ void readfile(std::vector<std::string> &file, const bool &lineNum) {
         } else {
             std::string line;
             int lnum {1};
-            printf("\n=== %s ===\n", filename.c_str());
+            printf("\n\t=== %s ===\n", filename.c_str());
             while (std::getline(name, line)) {
                 if (lineNum) {
-                    printf("%d. %s\n", lnum, line.c_str());
+                    printf("%5d  %s\n", lnum, line.c_str());
                     ++lnum;
                 } else printf("%s\n", line.c_str());
             }
@@ -56,10 +56,11 @@ void readfile(std::vector<std::string> &file, const bool &lineNum) {
 }
 
 void help() {
-    printf("\n=== Help ===\n");
+    printf("\n\t=== Help ===\n");
     printf("Usage: show [OPTION]... [FILENAME]...\n");
     printf("Print the content of FILENAME to standard output.\n\n");
     printf("Options:\n");
+    printf("  -n, --number\t\tAdd line numbers before each line\n");
     printf("  -h, --help\t\tShow this help message and exit\n");
     printf("\nExamples:\n");
     printf("  show file.txt\t\tPrint the content of file.txt\n");
