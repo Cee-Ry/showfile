@@ -88,4 +88,4 @@ showfile/
 
 ## License
 
-This project is open source. Feel free to use and modify it.
+This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
