@@ -81,6 +81,7 @@ showfile/
 ├── main.cpp          # Source code
 ├── CMakeLists.txt    # Build configuration
 ├── README.md         # This file you are reading
+├── LICENSE         # License
 └── .gitignore
 ```
 
