@@ -3,11 +3,12 @@
 #include <fstream>
 #include <string>
 
-void readfile(std::vector<std::string> &file);
+void readfile(std::vector<std::string> &file, const bool &lineNum);
 void help();
 
 int main(int argc, char *argv[]) {
     std::vector<std::string> file_names;
+    bool lineNum {};
 
     if (argc == 1) {
         fprintf(stderr, "[FILENAME] or/and [OPTION] must be added\n");
@@ -18,18 +19,20 @@ int main(int argc, char *argv[]) {
             if (argv[i] == std::string("-h") || argv[i] == std::string("--help")) {
                 help();
                 return 0;
+            } else if (argv[i] == std::string("-n") || argv[i] == std::string("--number")) {
+                lineNum = true;
+                continue;
             }
             file_names.push_back(argv[i]);
         }
     }
 
-    readfile(file_names);
+    readfile(file_names, lineNum);
 
     return 0;
 }
 
-void readfile(std::vector<std::string> &file) {
-    std::string line;
+void readfile(std::vector<std::string> &file, const bool &lineNum) {
     for (const auto &filename : file) {
         std::ifstream name(filename);
 
@@ -38,8 +41,15 @@ void readfile(std::vector<std::string> &file) {
             fprintf(stderr, "Try 'show --help' or 'show -h' for more information\n");
             continue;
         } else {
+            std::string line;
+            int lnum {1};
             printf("\n=== %s ===\n", filename.c_str());
-            while (std::getline(name, line)) printf("%s\n", line.c_str());
+            while (std::getline(name, line)) {
+                if (lineNum) {
+                    printf("%d. %s\n", lnum, line.c_str());
+                    ++lnum;
+                } else printf("%s\n", line.c_str());
+            }
             printf("\n");
         }
     }
