@@ -22,8 +22,19 @@ int main(int argc, char *argv[]) {
             } else if (argv[i] == std::string("-n") || argv[i] == std::string("--number")) {
                 lineNum = true;
                 continue;
+            } else if (argv[i][0] == '-') {
+                fprintf(stderr, "show: invalid option '%s'\n", argv[i]);
+                fprintf(stderr, "Try 'show --help' or 'show -h' for more information\n");
+                return 1;
+            } else {
+                file_names.push_back(argv[i]);
             }
-            file_names.push_back(argv[i]);
+        }
+
+        if (file_names.empty()) {
+            fprintf(stderr, "[FILENAME] must be added\n");
+            fprintf(stderr, "Try 'show --help' or 'show -h' for more information\n");
+            return 1;
         }
     }
 
@@ -37,8 +48,7 @@ void readfile(std::vector<std::string> &file, const bool &lineNum) {
         std::ifstream name(filename);
 
         if (!name.is_open()) {
-            fprintf(stderr, "show: %s: No such File or Option\n", filename.c_str());
-            fprintf(stderr, "Try 'show --help' or 'show -h' for more information\n");
+            fprintf(stderr, "show: %s: No such File or Directory\n", filename.c_str());
             continue;
         } else {
             std::string line;
