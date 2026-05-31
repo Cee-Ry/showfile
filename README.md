@@ -37,6 +37,13 @@ When displaying multiple files, each file is wrapped with a header:
 
 ## Building & Installing
 
+### Fedora
+
+```bash
+sudo dnf copr enable cee-ry/showfile
+sudo dnf install show
+```
+
 ### Requirements
 - CMake 3.10+
 - A C++ compiler (GCC, Clang, or MSVC)
