@@ -33,6 +33,13 @@ When displaying multiple files, each file is wrapped with a header:
 (contents of file2)
 ```
 
+## Options
+
+| Option | Description |
+|--------|-------------|
+| `-n`, `--number` | Add line numbers before each line |
+| `-h`, `--help` | Show help message and exit |
+
 ---
 
 ## Building & Installing
